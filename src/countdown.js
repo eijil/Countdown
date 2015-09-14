@@ -190,16 +190,3 @@
 
 	window.Countdown = Countdown;
 });
-
-var count = new Countdown($(".demo1"), {
-	format: 'dd天hh小时mm分ss秒',
-	onEnd: function(e) {
-		//console.log(e);
-		//$(e).remove();
-	}
-});
-var newele = $('<div class="demo1" diff="0"></div>');
-var newele2 = $(".demo1");
-$("body").append(newele);
-
-count.add(newele);

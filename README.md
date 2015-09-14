@@ -1,19 +1,15 @@
-# Countdown
-jquery countdown.js
+## countdown
+
+简单易用的倒计时组件，能满足大部分业务需求
 
 version 1.0.0
 
-use
-   new Countdown(ele,options)
+## 使用
+	
 
-options
-	format
-	auto
-	onEnd
-	onTimerEnd
 
-API
-    start
-	stop
-	add
+## options
 
+
+
+## API
