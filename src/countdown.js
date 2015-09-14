@@ -6,10 +6,8 @@
  */
 (function(factory) {
 	if (typeof define === "function" && define.amd) {
-
 		define(["jquery"], factory);
 	} else {
-
 		factory(jQuery);
 	}
 })(function($) {
@@ -36,30 +34,22 @@
 	Countdown.prototype = {
 
 		_init: function() {
+
 			var _ = this;
-
 			_.elems = $.makeArray(_.$el);
-
 			this.interval = _._o.format.indexOf('ms') ? 100 : 1000;
-
 			if (this._o.auto) {
-
 				this.start();
 			}
-
 		},
 		start: function() {
 
 			var _this = this;
-
 			if (this.timer != null) {
-
 				clearInterval(this.timer);
 			}
 			this.timer = setInterval(function() {
-
 				_this._render();
-
 			}, this.interval);
 		},
 		stop: function() {
@@ -78,30 +68,22 @@
 		_render: function() {
 
 			var _this = this;
-
 			if (!this.elems) {
-
 				this._clearInterval();
 			}
 			$(this.elems).each(function() {
 
 				var diff = ($(this).attr("diff") * 1000) - (new Date).getTime();
-
 				if (diff <= 0) {
-
 					_this._end(this);
-
 				} else {
-
 					$(this).html(_this._formatDate(diff));
 				}
-
 			});
 		},
 		_formatDate: function(diff) {
 
 			var format = this._o.format;
-
 			var d = 86400000,
 				h = 3600000,
 				m = 60000,
@@ -111,10 +93,8 @@
 				H,
 				M,
 				S,
-				MS
-
+				MS;
 			var timeHandler = {
-
 				dd: function() {
 					H = diff % d;
 					return Math.floor(diff / d);
@@ -151,10 +131,8 @@
 			};
 			//replace
 			format = format.replace(/(dd|hh|mm|ss|ms)/g, function(k) {
-
 				return k === 'ms' ? timeHandler[k]() : leadzero(timeHandler[k]())
 			});
-
 			return format;
 		},
 		/*
@@ -163,17 +141,13 @@
 		add: function($ele) {
 
 			var _this = this;
-
 			$ele.each(function() {
-
 				if (!_this._hasElem(this)) {
-
 					_this.elems.push(this);
 				}
 			})
 		},
 		_hasElem: function(ele) {
-
 			return ($.inArray(ele, this.elems) > -1);
 		},
 		/*
@@ -184,7 +158,7 @@
 			this.elems = $.map(this.elems,
 				function(value) {
 					return (value == ele ? null : value);
-				});
+			});
 		}
 	}
 
